@@ -5,7 +5,10 @@
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{refstyle}
+\usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{placeins}
+\usepackage{flafter}
 
 % Title Page
 \title{FRA501 Class Project: 1-Dimension Jumping Robot}
@@ -103,7 +106,29 @@ F_{a} -
 \label{eq:ground}
 \end{equation}
 
-(\ref{eq:ground}) represents the dynamics of the system when the robot is on the ground. While in midair, the robot's actuation of $x_{a}$ has a limit of $[0, l_{r}]$, at the 
+(\ref{eq:ground}) represents the dynamics of the system when the robot is on the ground. While in midair, the robot's actuation of $x_{a}$ has a limit of $[0, l_{r}]$, at the limits, we can classify the sytem's behaviour into two constrained states. At this point, we introduce a discrete valued state variable $x_{d} \in \{0, 1, 3, 4, 5\} \subset \mathbb{Z}$ that encodes the contact situations as assigned in Figure \ref{fig:contactdiagram}.\par
+
+%% Contact Diagram Fig
+\begin{figure}[h]
+	\vspace{1pt}
+	\centering
+	\includegraphics[scale=0.6]{images/transitiongraph.png} 
+	\caption{Transition graph of the robot.}
+	\label{fig:contactdiagram}
+\end{figure}
+\FloatBarrier
+We implement the simulation and control in MATLAB, using according to the following control diagram.
+
+%% Control Diagram Fig
+\begin{figure}[h]
+	\vspace{1pt}
+	\centering
+	\includegraphics[scale=0.6]{images/systemblockdiagram.png} 
+	\caption{Control of the robot.}
+	\label{fig:blockdiagram}
+\end{figure}\par
+
+
 
 
 \end{document}          
