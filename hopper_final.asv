@@ -3,13 +3,13 @@ tf = 30;
 g = 9.80665;
 
 mr = 0.2;
-ma = 1;
+ma = 0;
 m = mr+ma;                   
 ls = 0.2;
 lr = 0.5;
 
 qi = [ls+10;lr/2]; %[xp;xa]
-vi = [0;2*pi*(lr/2)];
+vi = [0;4*pi*(lr/2)];
 xi = [qi;vi];
 x_d = 1;
 t_v = [];
@@ -18,10 +18,10 @@ xd_v = [];
 
 iteration = 100000;
 for i = 1:iteration
-     options = odeset('Events',@(t,x)event(t,x,controller(t,x),x_d),'Refine',4);
-    [t,x,te,xe,ie] = ode45(@(t,x) dynamics(t,x,controller(t,x),x_d),[ti tf],xi,options);
-%     options = odeset('Events',@(t,x)event(t,x,[0;0],x_d),'Refine',4);
-%     [t,x,te,xe,ie] = ode45(@(t,x) dynamics(t,x,[0;0],x_d),[ti tf],xi,options);
+%      options = odeset('Events',@(t,x)event(t,x,controller(t,x),x_d),'Refine',4);
+%     [t,x,te,xe,ie] = ode45(@(t,x) dynamics(t,x,controller(t,x),x_d),[ti tf],xi,options);
+    options = odeset('Events',@(t,x)event(t,x,[0;0],x_d),'Refine',4);
+    [t,x,te,xe,ie] = ode45(@(t,x) dynamics(t,x,[0;0],x_d),[ti tf],xi,options);
     x_v = [x_v;x];
     t_v = [t_v;t];
     xd_v = [xd_v;x_d*ones(numel(t),1)];
@@ -125,7 +125,6 @@ function dx = dynamics(t,x,u,x_d)
         F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*F);
     elseif x_d == 3
-        Ja = [0 -1];
         inv_M = M\eye(2);
         F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*F);
@@ -135,7 +134,6 @@ function dx = dynamics(t,x,u,x_d)
         Fc = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*Fc+Js'*f);
     elseif x_d == 5
-        Ja = [0 -1];
         f = fs(t,x,ls);
         inv_M = M\eye(2);
         Fc = -(Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
@@ -178,9 +176,8 @@ function [value,isterminal,direction] = event(t,x,u,x_d)
         isterminal = [1;1];
         direction = [-1;-1];
     elseif x_d == 3
-        Ja = [0 -1];
         inv_M = M\eye(2);
-        F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
+        F = -(Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
         value = [F;x(1)-ls];
         isterminal = [1;1];
         direction = [-1;-1];
@@ -193,11 +190,10 @@ function [value,isterminal,direction] = event(t,x,u,x_d)
         direction = [1;1];
     elseif x_d == 5
         f = fs(t,x,ls);
-        Ja = [0 -1];
         inv_M = M\eye(2);
-        Fc = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
+        Fc = -(Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         value = [Fc;x(1)-ls];
-        isterminal = [1;1];
+        isterminal = [-1;1];
         direction = [-1;1];
 
     end
@@ -208,9 +204,9 @@ function u = controller(t,x)
       
     lr = 0.5;
     A = lr/2;
-    q = A*sin(2*pi*t)+lr/2;
-    qd = 2*pi*cos(2*pi*t);
-    qdd = -4*pi^2*A*sin(2*pi*t);
+    q = A*sin(4*pi*t)+lr/2;
+    qd = 4*pi*cos(2*pi*t);
+    qdd = -16*pi^2*A*sin(2*pi*t);
     Kp = 1000;
     Kd = 10;
     u = [0;qdd+Kp*(q-x(2))+Kd*(qd-x(4))];
