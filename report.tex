@@ -8,19 +8,102 @@
 \usepackage{amsmath}
 
 % Title Page
-\title{1-dimension Jumping Robot}
-\author{Chawakorn Chaichanawirote, Kanut Thummaraksa, and Noppasorn}
+\title{FRA501 Class Project: 1-Dimension Jumping Robot}
+\author{Chawakorn Chaichanawirote, Kanut Thummaraksa, 
+	\\and Noppasorn Larpkiattaworn}
 
 
 \begin{document}
 \maketitle
 
-We model and simulate the dynamics and control of a 1-dimension Jumping robot with a linear actuator.
+We model and simulate the dynamics and control of a 1-dimension Jumping robot with a linear actuator.\par
+The robot consists of two links; a linear actuator with mass $m_a$ and a moving thrust rod $m_r$. The bottom of the rod is connected to a massless spring, with a stiffness of $k$ and a drag coefficient $b$. Figure \ref{fig:system} shows the system diagram.
 
-\begin{section}[Design]
-The robot consists of two masses, a linear actuator and a moving thrust rod
-\end{section}
+%% System Fig
+\begin{figure}[h]
+	\vspace{1pt}
+	\centering
+	\includegraphics[scale=0.6]{images/JumpingRobot.png} 
+	\caption{The jumping robot.}
+	\label{fig:system}
+\end{figure}\par
 
+The joint space of the robot is defined by
+
+\begin{equation}
+	\vec{q} = \begin{bmatrix}
+	x_{p}\\
+	x_{a}
+	\end{bmatrix}
+\end{equation}
+We use Lagrangian dynamics to model the system's behaviour. Note that for convenience's sake, we will consider the spring force as an external force, as the links in motion must be rigid bodies\par
+The Lagrangian $\mathcal{L}$ of a mechanical system is defined by a the difference between its kinetic and potential energy
+\begin{equation}
+\mathcal{L} = K - P
+\end{equation}
+\begin{equation}
+	\mathcal{L} = \frac{1}{2}m_{a}(\dot{x_{a}} + \dot{x_{p}})^{2}+\frac{1}{2}m_{r}\dot{x_{p}}^{2}-m_{a}g(x_{a}+x_{p})-m_{r}g(x_{p}+\frac{l_{r}}{2})
+\end{equation}
+
+The Euler-Lagrange equations are then
+
+\begin{equation}
+	\frac{d}{dt}\frac{\partial L}{\partial \dot{\vec{q}}} - \frac{\partial L}{\partial \vec{q}} = Su
+	\label{eq:euler-lagrange}
+\end{equation}
+where,
+$S$ is the selection matrix of the input $u$. For this robot, $S = \begin{bmatrix}
+0&1
+\end{bmatrix}$\par 
+The input force given by the actuator is $u = F_{a}$. From (\ref{eq:euler-lagrange}) and the Lagrangian, we have
+
+\begin{equation}
+\begin{bmatrix}
+m_{a} + m_{r}&0\\
+0 & m_{a}
+\end{bmatrix}
+\begin{bmatrix}
+\ddot{x_{p}}\\
+\ddot{x_{a}}
+\end{bmatrix}
++\begin{bmatrix}
+m_{a}+m_{r}\\m_{a}
+\end{bmatrix}g =
+\begin{bmatrix}
+0\\1
+\end{bmatrix}
+F_{a}
+\label{eq:ballistic}
+\end{equation}
+
+With no external force acting on the system, (\ref{eq:ballistic}) represents the dynamics of the robot in mid-air. Once the spring touches the ground($x_{p}<l_{s}$)and starts to compress, we can add its external force $f_{s} = -(k(l_{s}-x_{p})+b\dot{x_{p}})$ to the system via its transposed Jacobian $J^{T} = \begin{bmatrix}
+1\\0
+\end{bmatrix}$ to get
+
+\begin{equation}
+\begin{bmatrix}
+m_{a} + m_{r}&0\\
+0 & m_{a}
+\end{bmatrix}
+\begin{bmatrix}
+\ddot{x_{p}}\\
+\ddot{x_{a}}
+\end{bmatrix}
++\begin{bmatrix}
+m_{a}+m_{r}\\m_{a}
+\end{bmatrix}g =
+\begin{bmatrix}
+0\\1
+\end{bmatrix}
+F_{a} - 
+\begin{bmatrix}
+1\\0
+\end{bmatrix}
+(k(l_{s}-x_{p})+b\dot{x_{p}})
+\label{eq:ground}
+\end{equation}
+
+(\ref{eq:ground}) represents the dynamics of the system when the robot is on the ground. While in midair, the robot's actuation of $x_{a}$ has a limit of $[0, l_{r}]$, at the 
 
 
 \end{document}          
