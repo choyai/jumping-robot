@@ -122,23 +122,23 @@ function dx = dynamics(t,x,u,x_d)
     elseif x_d == 2
 %         F = -(Ja*M*(Ja'))\(Ja*(M\u));
         inv_M = M\eye(2);
-        F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
+        F = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*F);
     elseif x_d == 3
         Ja = [0 -1];
         inv_M = M\eye(2);
-        F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
+        F = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*F);
     elseif x_d == 4
         f = fs(t,x,ls);
         inv_M = M\eye(2);
-        Fc = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
+        Fc = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         vd = M\(S*u-G+Ja'*Fc+Js'*f);
     elseif x_d == 5
         Ja = [0 -1];
         f = fs(t,x,ls);
         inv_M = M\eye(2);
-        Fc = -(Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
+        Fc = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         disp([t Fc])
         vd = M\(S*u-G+Ja'*Fc+Js'*f);
     end
@@ -146,7 +146,7 @@ function dx = dynamics(t,x,u,x_d)
 end
 function f = fs(t,x,ls)
     k = 5800;
-    b = 0.5;
+    b = 5;
     f = k*(ls-x(1))+b*(x(3));
 end
 function [value,isterminal,direction] = event(t,x,u,x_d)
@@ -173,21 +173,21 @@ function [value,isterminal,direction] = event(t,x,u,x_d)
         direction = [-1;-1;-1];
     elseif x_d == 2
         inv_M = M\eye(2);
-        F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
+        F = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*S*u);
         value = [F;x(1)-ls];
         isterminal = [1;1];
         direction = [-1;-1];
     elseif x_d == 3
         Ja = [0 -1];
         inv_M = M\eye(2);
-        F = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*S*u);
+        F = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*S*u);
         value = [F;x(1)-ls];
         isterminal = [1;1];
         direction = [-1;-1];
     elseif x_d == 4
         f = fs(t,x,ls);
         inv_M = M\eye(2);
-        Fc = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
+        Fc = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         value = [Fc;x(1)-ls];
         isterminal = [1;1];
         direction = [1;1];
@@ -195,7 +195,7 @@ function [value,isterminal,direction] = event(t,x,u,x_d)
         f = fs(t,x,ls);
         Ja = [0 -1];
         inv_M = M\eye(2);
-        Fc = (Ja*inv_M*(Ja'))*(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
+        Fc = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
         value = [Fc;x(1)-ls];
         isterminal = [1;1];
         direction = [-1;1];
