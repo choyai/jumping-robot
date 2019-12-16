@@ -7,6 +7,11 @@ ma = 1;
 m = mr+ma;                   
 ls = 0.2;
 lr = 0.5;
+M = [m ma;ma 1];
+G = [m*g;ma*g];
+S = [1 0;0 1];
+Js = [1 0];
+Ja = [0 1];
 
 qi = [ls+10;lr/2]; %[xp;xa]
 vi = [0;2*pi*(lr/2)];
@@ -15,6 +20,7 @@ x_d = 1;
 t_v = [];
 x_v = [];
 xd_v = [];
+
 
 iteration = 100000;
 for i = 1:iteration
@@ -31,7 +37,7 @@ for i = 1:iteration
     end
     ti = te;
     
-%     disp([x_d ie])
+
     if x_d == 0
         if ie == 1
             xi = xe';
@@ -100,7 +106,7 @@ hold off
 
 
 function dx = dynamics(t,x,u,x_d)
-%     disp([x(1) x_d])
+
     qd = x(3:4);
     mr = 0.2;
     ma = 1;
@@ -139,7 +145,6 @@ function dx = dynamics(t,x,u,x_d)
         f = fs(t,x,ls);
         inv_M = M\eye(2);
         Fc = (Ja*inv_M*(Ja'))\(Ja*inv_M*G - Ja*inv_M*Js'*f - Ja*inv_M*S*u);
-        disp([t Fc])
         vd = M\(S*u-G+Ja'*Fc+Js'*f);
     end
     dx = [qd;vd]; 
