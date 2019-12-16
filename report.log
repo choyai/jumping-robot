@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.10.13)  15 DEC 2019 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.10.13)  16 DEC 2019 19:08
 entering extended mode
 **./report.tex
 (report.tex
@@ -290,13 +290,13 @@ File: images/JumpingRobot.png Graphic file (type png)
 Package pdftex.def Info: images/JumpingRobot.png  used on input line 29.
 (pdftex.def)             Requested size: 145.7456pt x 271.01459pt.
  [1 <./images/JumpingRobot.png>]
-<images/transitiongraph.png, id=18, 704.6325pt x 925.4575pt>
+<images/transitiongraph.png, id=18, 774.895pt x 924.45375pt>
 File: images/transitiongraph.png Graphic file (type png)
 <use images/transitiongraph.png>
 Package pdftex.def Info: images/transitiongraph.png  used on input line 115.
-(pdftex.def)             Requested size: 422.78278pt x 555.2788pt.
+(pdftex.def)             Requested size: 464.94058pt x 554.67653pt.
 
-Overfull \hbox (32.78278pt too wide) in paragraph at lines 115--116
+Overfull \hbox (74.94058pt too wide) in paragraph at lines 115--116
  [][] 
  []
 
@@ -330,7 +330,7 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (5 pages, 120344 bytes).
+Output written on report.pdf (5 pages, 129897 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
