@@ -79,7 +79,7 @@ F_{a}
 \label{eq:ballistic}
 \end{equation}
 
-With no external force acting on the system, (\ref{eq:ballistic}) represents the dynamics of the robot in mid-air. Once the spring touches the ground($x_{p}<l_{s}$)and starts to compress, we can add its external force $f_{s} = -(k(l_{s}-x_{p})+b\dot{x_{p}})$ to the system via its transposed Jacobian $J^{T} = \begin{bmatrix}
+With no external force acting on the system, (\ref{eq:ballistic}) represents the dynamics of the robot in mid-air. Once the spring touches the ground($x_{p}<l_{s}$)and starts to compress, we can add its external force $f_{s} = -(k(l_{s}-x_{p})+b\dot{x_{p}})$ to the system via its transposed Jacobian $J_{s}^{T} = \begin{bmatrix}
 1\\0
 \end{bmatrix}$ to get
 
@@ -117,13 +117,20 @@ F_{a} -
 	\label{fig:contactdiagram}
 \end{figure}
 \FloatBarrier
+
+The contact force for each contact situation is
+
+\begin{equation}
+	sdfsdf
+\end{equation}
+
 We implement the simulation and control in MATLAB, using according to the following control diagram.
 
 %% Control Diagram Fig
 \begin{figure}[h]
 	\vspace{1pt}
 	\centering
-	\includegraphics[scale=0.6]{images/systemblockdiagram.png} 
+	\includegraphics[scale=0.7]{images/system.jpg} 
 	\caption{Control of the robot.}
 	\label{fig:blockdiagram}
 \end{figure}\par
