@@ -10,6 +10,9 @@
 \usepackage{placeins}
 \usepackage{flafter}
 
+
+
+
 % Title Page
 \title{FRA501 Class Project: 1-Dimension Jumping Robot}
 \author{Chawakorn Chaichanawirote, Kanut Thummaraksa, 
@@ -18,8 +21,9 @@
 
 \begin{document}
 \maketitle
-
 We model and simulate the dynamics and control of a 1-dimension Jumping robot with a linear actuator.\par
+\section*{Robot Model}
+\subsection*{Continuous Dynamics}
 The robot consists of two links; a linear actuator with mass $m_a$ and a moving thrust rod $m_r$. The bottom of the rod is connected to a massless spring, with a stiffness of $k$ and a drag coefficient $b$. Figure \ref{fig:system} shows the system diagram.
 
 %% System Fig
@@ -102,11 +106,18 @@ F_{a} -
 \begin{bmatrix}
 1\\0
 \end{bmatrix}
-(k(l_{s}-x_{p})+b\dot{x_{p}})
+(k(l_{s}-x_{p})-b\dot{x_{p}})
 \label{eq:ground}
 \end{equation}
 
-(\ref{eq:ground}) represents the dynamics of the system when the robot is on the ground. While in midair, the robot's actuation of $x_{a}$ has a limit of $[0, l_{r}]$, at the limits, we can classify the sytem's behaviour into two constrained states. At this point, we introduce a discrete valued state variable $x_{d} \in \{0, 1, 3, 4, 5\} \subset \mathbb{Z}$ that encodes the contact situations as assigned in Figure \ref{fig:contactdiagram}.\par
+(\ref{eq:ground}) represents the dynamics of the system when the robot is on the ground. This can be generalized into the robot equation
+\begin{equation}
+	M\vec{a} + G = S\vec{u} + J_{s}^{T}f_{s}
+\end{equation}
+
+\subsection*{Discrete States}
+
+ The robot's actuation of $x_{a}$ has a limit of $[0, l_{r}]$, at the limits, we can classify the sytem's behaviour into four constrained states. At this point, we introduce a discrete valued state variable $x_{d} \in \{0, 1, 3, 4, 5\} \subset \mathbb{Z}$ that encodes the contact situations as assigned in Figure \ref{fig:contactdiagram}.\par
 
 %% Contact Diagram Fig
 \begin{figure}[h]
@@ -118,12 +129,35 @@ F_{a} -
 \end{figure}
 \FloatBarrier
 
-The contact force for each contact situation is
+The contact force for each contact situation is 
 
 \begin{equation}
-	sdfsdf
+	F_{c} = (J_{c}M^{-1}J_{c}^{T})^{-1}(J_{c}M^{-1}G - J_{c}M^{-1}S\vec{u} - J_{c}M^{-1}J_{s}^{T}f_{s})
 \end{equation}
 
+Which allows us to find the acceleration
+
+\begin{equation}
+	\vec{a} = M^{-1}(-G+S\vec{u} + J_{s}^{T}f_{s} + J_{c}F_{c})
+\end{equation}
+
+The Jacobian for all contacts are $J_{c} = \begin{bmatrix}
+0 & 1
+\end{bmatrix}$. Note that $f_{s}$ is only present for states with $x_{p}<l_{s}$.\par 
+Next, we find the the collision force of each collision, $F_{i}$, as well as the velocity after impact of the actuator $v^{+}$
+
+\begin{equation}
+F_{i} = -(J_{c}M^{-1}J_{c}^{T})^{-1}J_{c}v^{-}
+\end{equation}
+
+\begin{equation}
+	v^{+} = v^{-} + M^{-1}(J_{c}^{T}F_{i})
+\end{equation}
+
+With these equations, we can simulate the dynamics of the robot.
+
+
+\section*{Simulation}
 We implement the simulation and control in MATLAB, using according to the following control diagram.
 
 %% Control Diagram Fig
@@ -134,8 +168,33 @@ We implement the simulation and control in MATLAB, using according to the follow
 	\caption{Control of the robot.}
 	\label{fig:blockdiagram}
 \end{figure}\par
+We run the simulation using the following input trajectory.
+$$\vec{q} = \frac{l_{r}}{2}(2\pi t)+\frac{l_{r}}{2}$$
+$$\dot{\vec{q}} = 2\pi\cos(2\pi t)$$
+$$\ddot{\vec{q}} = -4\pi^{2}(\frac{l_{r}}{2})\sin(2\pi t)$$
+The PD constants are $K_{p} = 1000, K_{d} = 10$\par
+The system is simulated for total time $T = 30 $ seconds. The initial values and constants are as follows(all units are SI):\par 
+$$x_{a} = 0.25$$
+$$x_{p} = 10.2$$
+$$x_{d} = 1$$
 
+$$g = 9.80665$$
+$$m_{r} = 0.2$$
+$$m_{a} = 1$$
+$$l_{s} = 0.2$$
+$$l_{r} = 0.5$$
 
+The results of the simulation are shown in Figure \ref{fig:result}.
 
+%% Result Fig
+\begin{figure}[h]
+	\vspace{1pt}
+	\centering
+	\includegraphics[scale=0.8]{images/simulation.png} 
+	\caption{The result of the simulation.}
+	\label{fig:result}
+\end{figure}\par
+
+Notice that the robot achieves a jumping motion, while the values for $x_{a}$ are still within its bounds.
 
 \end{document}          

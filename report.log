@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.10.13)  16 DEC 2019 21:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.10.13)  16 DEC 2019 22:46
 entering extended mode
 **./report.tex
 (report.tex
@@ -199,18 +199,18 @@ Already applied: [0000/00/00] float order in 2-column on input line 151.
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -272,12 +272,12 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -287,16 +287,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/JumpingRobot.png, id=7, 242.9075pt x 451.6875pt>
 File: images/JumpingRobot.png Graphic file (type png)
 <use images/JumpingRobot.png>
-Package pdftex.def Info: images/JumpingRobot.png  used on input line 29.
+Package pdftex.def Info: images/JumpingRobot.png  used on input line 33.
 (pdftex.def)             Requested size: 145.7456pt x 271.01459pt.
  [1 <./images/JumpingRobot.png>]
-<images/transitiongraph.png, id=18, 774.895pt x 924.45375pt>
+<images/transitiongraph.png, id=17, 774.895pt x 924.45375pt>
 File: images/transitiongraph.png Graphic file (type png)
 <use images/transitiongraph.png>
-Package pdftex.def Info: images/transitiongraph.png  used on input line 115.
+Package pdftex.def Info: images/transitiongraph.png  used on input line 126.
 (pdftex.def)             Requested size: 464.94058pt x 554.67653pt.
 
-Overfull \hbox (74.94058pt too wide) in paragraph at lines 115--116
+Overfull \hbox (74.94058pt too wide) in paragraph at lines 126--127
  [][] 
  []
 
@@ -304,38 +304,51 @@ Overfull \hbox (74.94058pt too wide) in paragraph at lines 115--116
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2] [3 <./images/transitiongraph.png>]
-<images/system.jpg, id=27, 608.2725pt x 318.43968pt>
+<images/system.jpg, id=28, 608.2725pt x 318.43968pt>
 File: images/system.jpg Graphic file (type jpg)
 <use images/system.jpg>
-Package pdftex.def Info: images/system.jpg  used on input line 133.
+Package pdftex.def Info: images/system.jpg  used on input line 167.
 (pdftex.def)             Requested size: 425.78786pt x 222.90625pt.
 
-Overfull \hbox (35.78786pt too wide) in paragraph at lines 133--134
+Overfull \hbox (35.78786pt too wide) in paragraph at lines 167--168
  [][] 
  []
 
 [4
 
- <./images/system.jpg>] (report.aux) ) 
+ <./images/system.jpg>]
+<images/simulation.png, id=33, 593.96906pt x 190.46156pt>
+File: images/simulation.png Graphic file (type png)
+<use images/simulation.png>
+Package pdftex.def Info: images/simulation.png  used on input line 193.
+(pdftex.def)             Requested size: 475.17589pt x 152.36943pt.
+
+Overfull \hbox (85.17589pt too wide) in paragraph at lines 193--194
+ [][] 
+ []
+
+[5 <./images/simulation.png (PNG copy)>] (report.aux) ) 
 Here is how much of TeX's memory you used:
- 2938 strings out of 492942
- 39839 string characters out of 3135499
- 116610 words of memory out of 3000000
- 6793 multiletter control sequences out of 15000+200000
- 11183 words of font info for 44 fonts, out of 3000000 for 9000
+ 2948 strings out of 492942
+ 40026 string characters out of 3135499
+ 117618 words of memory out of 3000000
+ 6801 multiletter control sequences out of 15000+200000
+ 12096 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,25p,483b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTe
+ 41i,9n,28p,379b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (5 pages, 166266 bytes).
+Output written on report.pdf (6 pages, 206276 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
+ 68 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
